@@ -68,7 +68,15 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-17",
-            path = "~/.sdkman/candidates/java/22.1.0.1.r17-gln",
+            path = "~/.sdkman/candidates/java/17.0.5-oracle",
+          },
+          {
+            name = "JavaSE-18",
+            path = "~/.sdkman/candidates/java/18.0.2-sem"
+          },
+          {
+            name = "JavaSE-20",
+            path = "~/.sdkman/candidates/java/20.0.1-oracle",
           },
         },
       },
