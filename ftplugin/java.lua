@@ -67,12 +67,8 @@ local config = {
         updateBuildConfiguration = "interactive",
         runtimes = {
           {
-            name = "JavaSE-11",
-            path = "~/.sdkman/candidates/java/11.0.17-tem",
-          },
-          {
-            name = "JavaSE-18",
-            path = "~/.sdkman/candidates/java/18.0.2-sem",
+            name = "JavaSE-17",
+            path = "~/.sdkman/candidates/java/22.1.0.1.r17-gln",
           },
         },
       },
