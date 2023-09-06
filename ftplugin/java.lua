@@ -1,57 +1,35 @@
--- credit: https://github.com/ChristianChiarulli/nvim
-local status_ok, jdtls = pcall(require, "jdtls")
-if not status_ok then
+local status, jdtls = pcall(require, "jdtls")
+if not status then
   return
 end
 
--- Determine OS
-local home = vim.env.HOME
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason")
-local launcher_path = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
-if #launcher_path == 0 then
-  launcher_path = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)[1]
-end
-local CONFIG = "linux"
+local home = os.getenv "HOME"
+local workspace_path = home .. "/.local/share/lunarvim/jdtls-workspace/"
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = workspace_path .. project_name
+
+local os_config = "linux"
 if vim.fn.has "mac" == 1 then
-  WORKSPACE_PATH = home .. "/workspace/"
-  CONFIG = "mac"
-elseif vim.fn.has "unix" == 1 then
-  WORKSPACE_PATH = home .. "/workspace/"
-else
-  vim.notify("Unsupported system", vim.log.levels.ERROR)
+  os_config = "mac"
 end
 
--- Find root of project
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-local root_dir = require("jdtls.setup").find_root(root_markers)
-if root_dir == "" then
-  return
-end
-
+local capabilities = require("lvim.lsp").common_capabilities()
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = WORKSPACE_PATH .. project_name
-
--- Test bundle
--- Run :MasonInstall java-test
-local bundles = { vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true) }
-if #bundles == 0 then
-  bundles = { vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true) }
-end
--- Debug bundle
--- Run :MasonInstall java-debug-adapter
-local extra_bundles =
-  vim.fn.glob(mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", true)
-if #extra_bundles == 0 then
-  extra_bundles = vim.fn.glob(
-    mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-    true
+lvim.builtin.dap.active = true
+local bundles = {}
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar"), "\n"))
+vim.list_extend(
+  bundles,
+  vim.split(
+    vim.fn.glob(mason_path .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
+    "\n"
   )
-end
-vim.list_extend(bundles, { extra_bundles })
+)
 
+lvim.builtin.dap.active = true
 local config = {
   cmd = {
     "java",
@@ -60,51 +38,47 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. mason_path .. "/packages/jdtls/lombok.jar",
     "-Xms1g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
+    "-javaagent:" .. mason_path .. "packages/jdtls/lombok.jar",
     "-jar",
-    launcher_path,
+    vim.fn.glob(mason_path .. "packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
-    mason_path .. "/packages/jdtls/config_" .. CONFIG,
+    mason_path .. "packages/jdtls/config_" .. os_config,
     "-data",
     workspace_dir,
   },
+  root_dir = require("jdtls.setup").find_root { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
+  capabilities = capabilities,
 
-  on_attach = function(client, bufnr)
-    local _, _ = pcall(vim.lsp.codelens.refresh)
-    if lvim.builtin.dap.active then
-      require("jdtls.dap").setup_dap_main_class_configs()
-      require("jdtls").setup_dap { hotcodereplace = "auto" }
-      require("lvim.lsp").on_attach(client, bufnr)
-    end
-  end,
-  on_init = require("lvim.lsp").common_on_init,
-  on_exit = require("lvim.lsp").common_on_exit,
-  capabilities = require("lvim.lsp").common_capabilities(),
-  root_dir = root_dir,
   settings = {
     java = {
-      -- jdt = {
-      --   ls = {
-      --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-      --   }
-      -- },
       eclipse = {
         downloadSources = true,
       },
       configuration = {
         updateBuildConfiguration = "interactive",
+        runtimes = {
+          {
+            name = "JavaSE-17",
+            path = "~/.sdkman/candidates/java/17.0.5-oracle",
+          },
+          {
+            name = "JavaSE-18",
+            path = "~/.sdkman/candidates/java/18.0.2-sem"
+          },
+          {
+            name = "JavaSE-20",
+            path = "~/.sdkman/candidates/java/20.0.1-oracle",
+          },
+        },
       },
       maven = {
         downloadSources = true,
-      },
-      implementationsCodeLens = {
-        enabled = true,
       },
       referencesCodeLens = {
         enabled = true,
@@ -118,60 +92,43 @@ local config = {
         },
       },
       format = {
-        enabled = true,
-        settings = {
-          profile = "GoogleStyle",
-          url = home .. "/.config/lvim/.java-google-formatter.xml",
-        },
+        enabled = false,
       },
     },
     signatureHelp = { enabled = true },
-    completion = {
-      favoriteStaticMembers = {
-        "org.hamcrest.MatcherAssert.assertThat",
-        "org.hamcrest.Matchers.*",
-        "org.hamcrest.CoreMatchers.*",
-        "org.junit.jupiter.api.Assertions.*",
-        "java.util.Objects.requireNonNull",
-        "java.util.Objects.requireNonNullElse",
-        "org.mockito.Mockito.*",
-      },
-    },
-    contentProvider = { preferred = "fernflower" },
     extendedClientCapabilities = extendedClientCapabilities,
-    sources = {
-      organizeImports = {
-        starThreshold = 9999,
-        staticStarThreshold = 9999,
-      },
-    },
-    codeGeneration = {
-      toString = {
-        template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-      },
-      useBlocks = true,
-    },
-  },
-  flags = {
-    allow_incremental_sync = true,
-    server_side_fuzzy_completion = true,
   },
   init_options = {
     bundles = bundles,
   },
 }
 
-jdtls.start_or_attach(config)
+config["on_attach"] = function(client, bufnr)
+  local _, _ = pcall(vim.lsp.codelens.refresh)
+  require("jdtls").setup_dap({ hotcodereplace = "auto" })
+  require("lvim.lsp").on_attach(client, bufnr)
+  local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
+  if status_ok then
+    jdtls_dap.setup_dap_main_class_configs()
+  end
+end
 
-vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
-vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
-vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
--- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
-vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
--- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.java" },
+  callback = function()
+    local _, _ = pcall(vim.lsp.codelens.refresh)
+  end,
+})
 
-local wkstatus_ok, which_key = pcall(require, "which-key")
-if not wkstatus_ok then
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "google_java_format", filetypes = { "java" } },
+}
+
+require("jdtls").start_or_attach(config)
+
+local status_ok, which_key = pcall(require, "which-key")
+if not status_ok then
   return
 end
 
@@ -216,6 +173,4 @@ local vmappings = {
 
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
-
-vim.cmd [[setlocal shiftwidth=2]]
-vim.cmd [[setlocal tabstop=2]]
+which_key.register(vmappings, vopts)
