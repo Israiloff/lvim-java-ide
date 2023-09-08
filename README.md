@@ -4,7 +4,7 @@ This project aims to convert [LunarVim](https://www.lunarvim.org/) to the fully 
 
 ## Requirements
 
-- [Sdkman](https://sdkman.io/)
+- Installed [Sdkman](https://sdkman.io/)
 
 - [Java 17+](https://sdkman.io/jdks) installed via [Sdkman](https://sdkman.io/) 
 
