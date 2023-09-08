@@ -15,6 +15,9 @@ git clone https://github.com/Israiloff/lvim-java-ide.git
 
 ```bash
 :MasonInstall java-test
+```
+
+```bash
 :MasonInstall java-debug-adapter
 ```
 
