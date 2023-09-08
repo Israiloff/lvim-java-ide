@@ -23,8 +23,7 @@ sdk install maven
 1. Clone [this configs](https://github.com/Israiloff/lvim-java-ide) into **~/.config/lvim/** folder.
 
 ```bash
-cd ~/.config/lvim/
-git clone https://github.com/Israiloff/lvim-java-ide.git
+git clone https://github.com/Israiloff/lvim-java-ide.git ~/.config/lvim/
 ```
 
 2. Run lvim and install 
