@@ -11,11 +11,16 @@ cd ~/.config/lvim/
 git clone https://github.com/Israiloff/lvim-java-ide.git
 ```
 
-2. Run lvim and install java test and java debug adapter plugins from Mason
+2. Run lvim and install 
+
+- Java test plugin
 
 ```bash
 :MasonInstall java-test
 ```
+
+- Java debug adapter plugin
+
 
 ```bash
 :MasonInstall java-debug-adapter
