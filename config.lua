@@ -4,7 +4,6 @@ lvim.plugins = {
         "briones-gabriel/darcula-solid.nvim",
         dependencies = "rktjmp/lush.nvim"
     },
-    { "folke/tokyonight.nvim" }
 }
 
 lvim.transparent_window = true
