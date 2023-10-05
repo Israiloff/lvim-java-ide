@@ -340,7 +340,7 @@
         <setting
             id="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_allocation_expression"
             value="do not insert" />
-        <setting id="org.eclipse.jdt.core.formatter.tabulation.size" value="2" />
+        <setting id="org.eclipse.jdt.core.formatter.tabulation.size" value="4" />
         <setting
             id="org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_type_reference"
             value="do not insert" />

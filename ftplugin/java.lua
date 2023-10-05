@@ -121,7 +121,7 @@ local config = {
                 enabled = true,
                 settings = {
                     profile = "GoogleStyle",
-                    url = home .. "/.config/lvim/.java-google-formatter.xml",
+                    url = home .. "/.config/lvim/java-style.xml",
                 },
             },
         },
@@ -217,5 +217,5 @@ local vmappings = {
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
 
-vim.cmd [[setlocal shiftwidth=2]]
-vim.cmd [[setlocal tabstop=2]]
+-- vim.cmd [[setlocal shiftwidth=2]]
+-- vim.cmd [[setlocal tabstop=2]]
