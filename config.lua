@@ -1,4 +1,4 @@
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
+lvim.lsp.automatic_servers_installation = false
 
 lvim.plugins = {
     {
