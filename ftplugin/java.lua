@@ -34,23 +34,13 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
--- Test bundle
--- Run :MasonInstall java-test
-local bundles = { vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true) }
-if #bundles == 0 then
-    bundles = { vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true) }
-end
--- Debug bundle
--- Run :MasonInstall java-debug-adapter
-local extra_bundles =
-    vim.fn.glob(mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", true)
-if #extra_bundles == 0 then
-    extra_bundles = vim.fn.glob(
-        mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-        true
-    )
-end
-vim.list_extend(bundles, { extra_bundles })
+local bundles = {}
+
+vim.list_extend(bundles,
+    { vim.fn.glob(mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+        true) })
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true), "\n"))
 
 local config = {
     cmd = {
