@@ -1,5 +1,3 @@
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
-
 lvim.plugins = {
     {
         "mfussenegger/nvim-jdtls",
@@ -27,10 +25,25 @@ lvim.plugins = {
             require('gitsigns').setup()
             require("scrollbar.handlers.gitsigns").setup()
         end
+    },
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require('neogen').setup {
+                enabled = true,             --if you want to disable Neogen
+                input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
+                -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
+            }
+        end,
+        -- Uncomment next line if you want to follow only stable versions
+        -- version = "*"
     }
 }
 
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 
 require("local.gui")
 require("local.keymap")
 require("local.lsp")
+require("local.neogen")
