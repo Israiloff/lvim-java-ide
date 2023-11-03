@@ -13,9 +13,9 @@ local opts = {
 }
 
 local mappings = {
-    C = {
+    j = {
         name = "Java",
-        d = { "<Cmd>lua require('neogen').generate()<CR>", "Generate java docs" },
+        d = { "<Cmd>lua require('neogen').generate()<CR>", "Generate javadocs" },
     },
 }
 
