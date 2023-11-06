@@ -26,29 +26,38 @@ sdk install maven
 git clone https://github.com/Israiloff/lvim-java-ide.git ~/.config/lvim/
 ```
 
-2. Run lvim and install 
-
-- Java test plugin
+2. Clone and pack [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls)
 
 ```bash
-:MasonInstall java-test
+git clone https://github.com/eclipse-jdtls/eclipse.jdt.ls.git ~/projects/nvim/jdtls/
+cd ~/projects/nvim/jdtls/
+./mvnw clean verify -DskipTests=true
 ```
 
-- Java debug adapter plugin
-
+3. Clone, pack and install [java debug](https://github.com/microsoft/java-debug)
 
 ```bash
-:MasonInstall java-debug-adapter
+git clone https://github.com/microsoft/vscode-java-test ~/projects/nvim/java-test/
+cd ~/projects/nvim/java-debug/
+./mvnw clean install
 ```
 
-3. Exit from lvim and clear cache
+4. Clone and pack [java test](https://github.com/microsoft/vscode-java-test)
+
+```bash
+git clone https://github.com/microsoft/vscode-java-test.git
+cd ~/projects/nvim/java-test/
+npm run build-plugin
+```
+
+5. Download [Lombok](https://projectlombok.org/)
+
+```bash
+wget https://projectlombok.org/downloads/lombok.jar ~/projects/nvim/
+```
+
+6. Update Lvim and clear cache
 
 ```bash
 lvim +LvimUpdate +LvimCacheReset +q
-```
-
-4. Run lvim and install synchronize plugins
-
-```bash
-Lazy sync
 ```
