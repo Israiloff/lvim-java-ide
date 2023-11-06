@@ -3,14 +3,11 @@ if not status_ok then
     return
 end
 
--- Determine OS
 local home = vim.env.HOME
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason")
-local launcher_path = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
-if #launcher_path == 0 then
-    launcher_path = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
-        [1]
-end
+
+local launcher_path = vim.fn.glob(home ..
+    "/projects/nvim/jdtls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar")
+
 local CONFIG = "linux"
 if vim.fn.has "mac" == 1 then
     WORKSPACE_PATH = home .. "/workspace/"
@@ -21,7 +18,6 @@ else
     vim.notify("Unsupported system", vim.log.levels.ERROR)
 end
 
--- Find root of project
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
@@ -34,13 +30,13 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
-local bundles = {}
+local bundles = {
+    vim.fn.glob(
+        home .. "/projects/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+        true)
+}
 
-vim.list_extend(bundles,
-    { vim.fn.glob(mason_path .. "/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-        true) })
-
-vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "/packages/java-test/extension/server/*.jar", true), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/projects/nvim/java-test/server/*.jar", true), "\n"))
 
 local config = {
     cmd = {
@@ -50,7 +46,7 @@ local config = {
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
-        "-javaagent:" .. mason_path .. "/packages/jdtls/lombok.jar",
+        "-javaagent:" .. home .. "/projects/nvim/lombok.jar",
         "-Xms1g",
         "--add-modules=ALL-SYSTEM",
         "--add-opens",
@@ -60,7 +56,7 @@ local config = {
         "-jar",
         launcher_path,
         "-configuration",
-        mason_path .. "/packages/jdtls/config_" .. CONFIG,
+        home .. "/projects/nvim/jdtls/org.eclipse.jdt.ls.product/target/repository/config_" .. CONFIG,
         "-data",
         workspace_dir,
     },
@@ -79,11 +75,6 @@ local config = {
     root_dir = root_dir,
     settings = {
         java = {
-            -- jdt = {
-            --   ls = {
-            --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-            --   }
-            -- },
             eclipse = {
                 downloadSources = true,
             },
