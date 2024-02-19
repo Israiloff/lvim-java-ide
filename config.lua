@@ -38,6 +38,22 @@ lvim.plugins = {
         end,
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
+    },
+    {
+        "jackMort/ChatGPT.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "folke/trouble.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    },
+    {
+        "github/copilot.vim"
     }
 }
 
@@ -47,3 +63,4 @@ require("local.gui")
 require("local.keymap")
 require("local.lsp")
 require("local.neogen")
+require("local.copilot")
