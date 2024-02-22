@@ -18,8 +18,8 @@ lvim.keys.normal_mode["<S-TAB>"] = "<Cmd>BufferLineCycleNext<CR>"
 
 
 -- ChatGPT mappings
-lvim.builtin.which_key.mappings["C"] = {
-    name = "ChatGPT",
+lvim.builtin.which_key.mappings["a"] = {
+    name = "Open AI",
     mode = { "n", "v" },
     c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
     e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
