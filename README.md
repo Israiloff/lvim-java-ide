@@ -61,3 +61,24 @@ wget https://projectlombok.org/downloads/lombok.jar ~/projects/nvim/
 ```bash
 lvim +LvimUpdate +LvimCacheReset +q
 ```
+
+## Plugins and Tools
+
+### Copilot
+Copilot is a GitHub Copilot plugin for LunarVim. 
+
+To use it, follow these steps:
+- Run `:Copilot setup` and enter your Copilot account credentials.
+- Enable the plugin by running `:Copilot enable`
+
+### Open AI. Chat GPT-4
+Chat GPT is a plugin for LunarVim that uses OpenAI's GPT-4 to provide code completions and suggestions.
+
+To use it you need to have an OpenAI API key. Set the `OPENAI_API_KEY` environment variable in your shell and run `:ChatGPT enable` in LunarVim.
+
+
+```shell
+echo "OPENAI_API_KEY=<YOUR_PERSONAL_OPENAI_API_KEY>" >> $HOME/.zshrc
+```
+
+All features are available in the which-key menu.
