@@ -44,3 +44,5 @@ vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementa
 vim.keymap.set('n', '<M-p>', vim.lsp.buf.signature_help, { desc = "Signature help" })
 vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', '<M-i>', vim.lsp.buf.hover, { desc = "Show hover" })
+
+vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
