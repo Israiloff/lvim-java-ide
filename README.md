@@ -78,7 +78,7 @@ To use it you need to have an OpenAI API key. Set the `OPENAI_API_KEY` environme
 
 
 ```shell
-echo "OPENAI_API_KEY=<YOUR_PERSONAL_OPENAI_API_KEY>" >> $HOME/.zshrc
+echo "OPENAI_API_KEY=YOUR_PERSONAL_OPENAI_API_KEY" >> $HOME/.zshrc
 ```
 
 All features are available in the which-key menu.
