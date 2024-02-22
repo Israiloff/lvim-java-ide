@@ -65,7 +65,8 @@ lvim +LvimUpdate +LvimCacheReset +q
 ## Plugins and Tools
 
 ### Copilot
-Copilot is a GitHub Copilot plugin for LunarVim. 
+Copilot is a plugin for LunarVim that uses OpenAI's Codex to provide code completions and suggestions. 
+Completions `(alt+l)` are available in insert mode and suggestions are available in normal mode in which-key menu.
 
 To use it, follow these steps:
 - Run `:Copilot setup` and enter your Copilot account credentials.
