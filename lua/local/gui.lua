@@ -3,7 +3,7 @@ lvim.transparent_window = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-lvim.colorscheme = "darcula-solid"
+lvim.colorscheme = "darcula-java"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

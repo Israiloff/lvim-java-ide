@@ -3,7 +3,7 @@ lvim.plugins = {
         "mfussenegger/nvim-jdtls",
     },
     {
-        "briones-gabriel/darcula-solid.nvim",
+        "israiloff/darcula-java",
         dependencies = "rktjmp/lush.nvim"
     },
     {
