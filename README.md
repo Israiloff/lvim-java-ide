@@ -26,7 +26,7 @@ cd ~/projects/nvim/jdtls/
 3. Clone, pack and install [java debug](https://github.com/microsoft/java-debug)
 
 ```bash
-git clone https://github.com/microsoft/vscode-java-test ~/projects/nvim/java-test/
+git clone https://github.com/microsoft/java-debug.git ~/projects/nvim/java-debug/
 cd ~/projects/nvim/java-debug/
 ./mvnw clean install
 ```
