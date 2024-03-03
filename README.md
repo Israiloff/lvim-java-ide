@@ -42,7 +42,7 @@ npm run build-plugin
 5. Download [Lombok](https://projectlombok.org/)
 
 ```bash
-wget https://projectlombok.org/downloads/lombok.jar ~/projects/nvim/
+curl -L https://projectlombok.org/downloads/lombok.jar -o $HOME/projects/nvim/lombok.jar
 ```
 
 6. Update Lvim and clear cache
