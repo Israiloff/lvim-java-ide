@@ -4,19 +4,8 @@ This project aims to convert [LunarVim](https://www.lunarvim.org/) to the fully 
 
 ## Requirements
 
-- Installed [Sdkman](https://sdkman.io/)
-
-- [Java 17+](https://sdkman.io/jdks) installed via [Sdkman](https://sdkman.io/) 
-
-```bash
-sdk install java 20.0.2-oracle
-```
-
-- [Maven](https://sdkman.io/sdks#maven) installed via [Sdkman](https://sdkman.io/)
-
-```bash
-sdk install maven
-```
+- [Java 21+](https://openjdk.org/projects/jdk/21/) 
+- [Maven](https://maven.apache.org/download.cgi)
 
 ## Installation
 
