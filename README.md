@@ -9,25 +9,25 @@ This project aims to convert [LunarVim](https://www.lunarvim.org/) to the fully 
 
 ## Installation
 
-1. Clone [this configs](https://github.com/Israiloff/lvim-java-ide) into **~/.config/lvim/** folder.
+1. Clone [this configs](https://github.com/Israiloff/lvim-java-ide) into **$HOME/.config/lvim/** folder.
 
 ```bash
-git clone https://github.com/Israiloff/lvim-java-ide.git ~/.config/lvim/
+git clone https://github.com/Israiloff/lvim-java-ide.git $HOME/.config/lvim/
 ```
 
 2. Clone and pack [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls)
 
 ```bash
-git clone https://github.com/eclipse-jdtls/eclipse.jdt.ls.git ~/projects/nvim/jdtls/
-cd ~/projects/nvim/jdtls/
+git clone https://github.com/eclipse-jdtls/eclipse.jdt.ls.git $HOME/projects/nvim/jdtls/
+cd $HOME/projects/nvim/jdtls/
 ./mvnw clean verify -DskipTests=true
 ```
 
 3. Clone, pack and install [java debug](https://github.com/microsoft/java-debug)
 
 ```bash
-git clone https://github.com/microsoft/java-debug.git ~/projects/nvim/java-debug/
-cd ~/projects/nvim/java-debug/
+git clone https://github.com/microsoft/java-debug.git $HOME/projects/nvim/java-debug/
+cd $HOME/projects/nvim/java-debug/
 ./mvnw clean install
 ```
 
@@ -35,7 +35,7 @@ cd ~/projects/nvim/java-debug/
 
 ```bash
 git clone https://github.com/microsoft/vscode-java-test.git
-cd ~/projects/nvim/java-test/
+cd $HOME/projects/nvim/java-test/
 npm run build-plugin
 ```
 
