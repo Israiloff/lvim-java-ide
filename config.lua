@@ -54,7 +54,7 @@ lvim.plugins = {
     },
     {
         "github/copilot.vim"
-    }
+    },
 }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
@@ -65,4 +65,3 @@ require("local.lsp")
 require("local.neogen")
 require("local.copilot")
 require("local.clipboard")
-require("local.marksman")
