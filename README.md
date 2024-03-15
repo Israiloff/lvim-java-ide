@@ -34,7 +34,7 @@ cd $HOME/projects/nvim/java-debug/
 4. Clone and pack [java test](https://github.com/microsoft/vscode-java-test)
 
 ```bash
-git clone https://github.com/microsoft/vscode-java-test.git
+git clone https://github.com/microsoft/vscode-java-test.git $HOME/projects/nvim/java-test/
 cd $HOME/projects/nvim/java-test/
 npm run build-plugin
 ```
