@@ -57,7 +57,7 @@ lvim.plugins = {
     },
 }
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "lemminx" })
 
 require("local.gui")
 require("local.keymap")
