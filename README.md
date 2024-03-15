@@ -39,13 +39,21 @@ cd $HOME/projects/nvim/java-test/
 npm run build-plugin
 ```
 
-5. Download [Lombok](https://projectlombok.org/)
+5. Clone and pack [lemminx](https://github.com/eclipse/lemminx) for XML support
+
+```bash
+git clone https://github.com/eclipse/lemminx.git $HOME/projects/nvim/lemminx/
+cd $HOME/projects/nvim/lemminx/
+./mvnw clean verify -DskipTests
+```
+
+6. Download [Lombok](https://projectlombok.org/)
 
 ```bash
 curl -L https://projectlombok.org/downloads/lombok.jar -o $HOME/projects/nvim/lombok.jar
 ```
 
-6. Update Lvim and clear cache
+7. Update Lvim and clear cache
 
 ```bash
 lvim +LvimUpdate +LvimCacheReset +q
