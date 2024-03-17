@@ -55,6 +55,9 @@ lvim.plugins = {
     {
         "github/copilot.vim"
     },
+    {
+        "dawsers/telescope-file-history.nvim"
+    },
 }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "lemminx" })
@@ -65,3 +68,5 @@ require("local.lsp")
 require("local.neogen-plugin")
 require("local.copilot")
 require("local.clipboard")
+require("local.persisted")
+require("local.telescope-file-history")
