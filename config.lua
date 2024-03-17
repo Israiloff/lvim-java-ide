@@ -58,6 +58,11 @@ lvim.plugins = {
     {
         "dawsers/telescope-file-history.nvim"
     },
+    {
+        "olimorris/persisted.nvim",
+        lazy = false,  -- make sure the plugin is always loaded at startup
+        config = true, -- false will not run this plugin's setup function
+    }
 }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "lemminx" })
@@ -68,5 +73,5 @@ require("local.lsp")
 require("local.neogen-plugin")
 require("local.copilot")
 require("local.clipboard")
-require("local.persisted")
 require("local.telescope-file-history")
+require("local.persisted")

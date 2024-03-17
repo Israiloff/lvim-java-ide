@@ -52,3 +52,10 @@ lvim.builtin.which_key.mappings["A"] = {
     mode = { "n", "v" },
     p = { "<cmd>Copilot panel<CR>", "Open Copilot Panel", mode = { "n", "v" } },
 }
+
+-- Persisted mappings
+lvim.builtin.which_key.mappings["S"] = {
+    name = "Session",
+    mode = { "n" },
+    a = { "<cmd>Telescope persisted<CR>", "All sessions", mode = { "n" } },
+}
