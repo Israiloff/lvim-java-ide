@@ -14,8 +14,9 @@ lvim.keys.normal_mode["<F8>"] = "<Cmd>lua require('dap').step_over()<CR>"
 lvim.keys.normal_mode["<F9>"] = "<Cmd>lua require('dap').continue()<CR>"
 lvim.keys.normal_mode["<F10>"] = "<Cmd>lua require('dap').disconnect()<CR>"
 
-lvim.keys.normal_mode["<S-TAB>"] = "<Cmd>BufferLineCycleNext<CR>"
-
+-- Bufferline mappings
+lvim.keys.normal_mode["<M-l>"] = "<Cmd>BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<M-h>"] = "<Cmd>BufferLineCyclePrev<CR>"
 
 -- ChatGPT mappings
 lvim.builtin.which_key.mappings["a"] = {
