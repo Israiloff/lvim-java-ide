@@ -61,3 +61,12 @@ lvim.builtin.which_key.mappings["S"] = {
     mode = { "n" },
     a = { "<cmd>Telescope persisted<CR>", "All sessions", mode = { "n" } },
 }
+
+-- File history mappings
+lvim.builtin.which_key.mappings["F"] = {
+    name = "File",
+    mode = { "n" },
+    h = { "<cmd>Telescope file_history history<CR>", "View the file’s history", mode = { "n" } },
+    l = { "<cmd>Telescope file_history log<CR>", "View the file’s history incrementally", mode = { "n" } },
+    f = { "<cmd>Telescope file_history files<CR>", "View every file in the repo", mode = { "n" } }
+}
