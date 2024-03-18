@@ -1,7 +1,5 @@
--- Neovim settings for markdown-preview.nvim plugin in Lua
-
 -- Auto start markdown preview
-vim.g.mkdp_auto_start = 1
+vim.g.mkdp_auto_start = 0
 
 -- Auto close preview window when switching from a Markdown buffer
 vim.g.mkdp_auto_close = 1
@@ -13,7 +11,7 @@ vim.g.mkdp_refresh_slow = 0
 vim.g.mkdp_command_for_global = 0
 
 -- Make preview server accessible to others on your network
-vim.g.mkdp_open_to_the_world = 0
+vim.g.mkdp_open_to_the_world = 1
 
 -- Use a custom IP for opening the preview page
 vim.g.mkdp_open_ip = ''
@@ -50,7 +48,7 @@ vim.g.mkdp_markdown_css = ''
 vim.g.mkdp_highlight_css = ''
 
 -- Custom port for server or empty for random
-vim.g.mkdp_port = '93235'
+vim.g.mkdp_port = '33235'
 
 -- Preview page title, ${name} replaced by file name
 vim.g.mkdp_page_title = '「${name}」'
