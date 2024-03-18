@@ -32,5 +32,8 @@ lvim.plugins = {
         "olimorris/persisted.nvim",
         lazy = false,
         config = true,
+    },
+    {
+        "Pocco81/auto-save.nvim"
     }
 }
