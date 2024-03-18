@@ -35,9 +35,5 @@ lvim.plugins = {
     },
     {
         "Pocco81/auto-save.nvim"
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        build = "cd app && yarn install",
     }
 }
