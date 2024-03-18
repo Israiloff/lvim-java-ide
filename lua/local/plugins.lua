@@ -35,5 +35,8 @@ lvim.plugins = {
     },
     {
         "Pocco81/auto-save.nvim"
+    },
+    {
+        "archibate/lualine-time"
     }
 }
