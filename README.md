@@ -84,8 +84,6 @@ All features are available in the which-key menu.
 ## Docker container
 You can use the [Docker container](https://hub.docker.com/r/israiloff/lvim) to run LunarVim with Java IDE configurations.
 
-```bash
-
 ## Gallery
 
 ### Java code
