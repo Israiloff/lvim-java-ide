@@ -81,8 +81,24 @@ echo "export OPENAI_API_KEY=YOUR_PERSONAL_OPENAI_API_KEY" >> $HOME/.zshrc
 
 > All features are available in the `which-key` menu.
 
-## Docker container
-You can use the [Docker container](https://hub.docker.com/r/israiloff/lvim) to run LunarVim with [Java IDE configurations](https://github.com/Israiloff/lvim-java-ide).
+## Docker Container
+You can use the [Docker container](https://hub.docker.com/r/israiloff/lvim) configured in a separate 
+[project](https://github.com/Israiloff/lvim-java-ide-container) in a few simple steps.
+
+- Pull the image from the Docker Hub
+```bash
+docker run -it --name lvim israiloff/lvim:latest
+```
+
+- Run the container
+```bash
+docker start lvim
+```
+
+- Connect to the container
+```bash
+docker exec -it lvim /bin/zsh
+```
 
 ## Gallery
 
