@@ -91,6 +91,7 @@ All features are available in the which-key menu.
 
 ### Java debug
 ![Java debug](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_debug.png)
+![Java debug object expanded](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_debug_obj.png)
 
 ### Which-key menu
 ![Which-key menu](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_which_key_menu.png)
