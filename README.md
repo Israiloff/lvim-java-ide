@@ -107,6 +107,8 @@ docker exec -it lvim /bin/zsh
 
 ## Gallery
 
+> All screenshots are taken from the [Windows 11 terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701).
+
 ### Java code
 ![Java](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_code.png)
 
