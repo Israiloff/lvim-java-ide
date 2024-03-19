@@ -88,3 +88,6 @@ All features are available in the which-key menu.
 
 ### Java tests
 ![Java tests](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_tests.png)
+
+### Which-key menu
+![Which-key menu](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_which_key_menu.png)
