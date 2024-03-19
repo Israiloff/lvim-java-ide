@@ -91,3 +91,6 @@ All features are available in the which-key menu.
 
 ### Which-key menu
 ![Which-key menu](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_which_key_menu.png)
+
+### Chat GPT
+![Chat GPT](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_chat_gpt.png)
