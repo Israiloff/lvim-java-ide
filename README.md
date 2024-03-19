@@ -85,3 +85,6 @@ All features are available in the which-key menu.
 
 ### Java code
 ![Java](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_code.png)
+
+### Java tests
+![Java tests](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_tests.png)
