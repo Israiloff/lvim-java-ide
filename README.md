@@ -84,4 +84,4 @@ All features are available in the which-key menu.
 ## Gallery
 
 ### Java code
-![Java](https://github.com/israiloff/lvim-java-ide-resources/blob/master/vim_java_code.jpg?raw=true)
+![Java](https://github.com/Israiloff/lvim-java-ide-resources/blob/master/vim_java_code.png)
