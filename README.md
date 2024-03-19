@@ -85,12 +85,17 @@ echo "export OPENAI_API_KEY=YOUR_PERSONAL_OPENAI_API_KEY" >> $HOME/.zshrc
 You can use the [Docker container](https://hub.docker.com/r/israiloff/lvim) configured in a separate 
 [project](https://github.com/Israiloff/lvim-java-ide-container) in a few simple steps.
 
-- Pull the image from the Docker Hub
+- Pull the image
+```bash
+docker pull israiloff/lvim:latest
+```
+
+- Create a container
 ```bash
 docker run -it --name lvim israiloff/lvim:latest
 ```
 
-- Run the container
+- Start the container
 ```bash
 docker start lvim
 ```
