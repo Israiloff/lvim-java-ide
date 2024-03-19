@@ -80,3 +80,8 @@ echo "export OPENAI_API_KEY=YOUR_PERSONAL_OPENAI_API_KEY" >> $HOME/.zshrc
 ```
 
 All features are available in the which-key menu.
+
+## Gallery
+
+### Java code
+![Java](https://github.com/israiloff/lvim-java-ide-resources/blob/master/vim_java_code.jpg?raw=true)
