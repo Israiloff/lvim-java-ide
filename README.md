@@ -72,8 +72,8 @@ To use it, follow these steps:
 ### Open AI. Chat GPT-4
 Chat GPT is a plugin for LunarVim that uses OpenAI's GPT-4 to provide code completions and suggestions.
 
-To use it you need to have an OpenAI API key. Set the `OPENAI_API_KEY` environment variable in your shell and run `:ChatGPT enable` in LunarVim.
-
+To use it you need to have an [OpenAI API key](https://platform.openai.com/api-keys). 
+Set the `OPENAI_API_KEY` environment variable in your shell and run `:ChatGPT enable` in LunarVim.
 
 ```shell
 echo "export OPENAI_API_KEY=YOUR_PERSONAL_OPENAI_API_KEY" >> $HOME/.zshrc
