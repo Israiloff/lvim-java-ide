@@ -97,7 +97,7 @@ docker run -it -d -p 33235:33235 --name lvim israiloff/lvim:latest
 
 > Port `33235` is used for the [markdown preview server](https://github.com/iamcco/markdown-preview.nvim).
 
-- Connect to the container
+- Enter the container
 ```bash
 docker exec -it lvim /bin/zsh
 ```
