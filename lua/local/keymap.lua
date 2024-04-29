@@ -70,3 +70,9 @@ lvim.builtin.which_key.mappings["F"] = {
     l = { "<cmd>Telescope file_history log<CR>", "View the file’s history incrementally", mode = { "n" } },
     f = { "<cmd>Telescope file_history files<CR>", "View every file in the repo", mode = { "n" } }
 }
+
+lvim.builtin.which_key.mappings["n"] = {
+    name = "Notifications",
+    mode = { "n" },
+    l = { "<cmd>mess<CR>", "Show notification log", mode = { "n" } },
+}
