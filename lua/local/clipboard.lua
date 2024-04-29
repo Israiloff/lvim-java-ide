@@ -1,3 +1,7 @@
+if(vim.fn.executable("cb") == 0) then
+  return
+end
+
 vim.g.clipboard = {
   name = "cb",
   copy = {

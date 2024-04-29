@@ -90,17 +90,14 @@ You can use the [Docker container](https://hub.docker.com/r/israiloff/lvim) conf
 docker pull israiloff/lvim:latest
 ```
 
-- Create a container
+- Run the container
 ```bash
-docker run -it --name lvim israiloff/lvim:latest
+docker run -it -d -p 33235:33235 --name lvim israiloff/lvim:latest
 ```
 
-- Start the container
-```bash
-docker start lvim
-```
+> Port `33235` is used for the [markdown preview server](https://github.com/iamcco/markdown-preview.nvim).
 
-- Connect to the container
+- Enter the container
 ```bash
 docker exec -it lvim /bin/zsh
 ```
