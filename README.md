@@ -1,5 +1,15 @@
 # [LunarVim](https://www.lunarvim.org/) configurations.
 
+**Notice: This repository is no longer maintained.**
+
+We have transitioned to a new generation of Java development environment configurations. The new setup, called `JVIM`, is not based on Lunarvim but instead on a Neovim itself. All Java-related features are present and actively maintained.
+
+Please visit the new repository: [JVIM](https://github.com/Israiloff/jvim)
+
+Thank you for your understanding and continued support.
+
+## Introduction
+
 This project aims to convert [LunarVim](https://www.lunarvim.org/) to the fully usable Java IDE. It enables debugging, refactoring and other Java language related features.
 
 ## Requirements
